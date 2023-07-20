@@ -1,62 +1,37 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-    get 'order_items/show'
-  end
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/complete'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/confirm_withdraw'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-devise_for :customers,skip: [:passwords], controllers: {
+  #customer用認証機能
+  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
-}
-
-devise_for :admin,skip: [:registrations, :passwords], controllers: {
+  }
+  #admin用認証機能
+  devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
-}
+  }
+  #ルートパス
+  root to:'public/homes#top' 
+  #admin用
+  namespace :admin do
+    get 'order_items/show'
+    get 'orders/show'
+    resources :customers, only: [:index, :show, :edit]
+    resources :genres, only: [:index, :edit]
+    resources :items, only: [:index, :show, :edit, :new]
+    get 'top' => 'homes#top'
+  end
+  #customer用
+  scope module: :public do
+    resources :addresses, only: [:index, :edit]
+    resources :orders, only: [:new, :index, :show, :complete]
+    get 'cart_items/index'
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
+    patch 'customers/information' => 'customers#update'
+    get  'customers/confirm_withdraw' => 'customers#confirm_withdraw'
+    patch  'customers/withdraw' => 'customers#withdraw'
+    resources :items, only: [:index, :show]
+    get 'homes/about' => 'homes#about'
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
