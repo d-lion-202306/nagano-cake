@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   #ルートパス
-  root to:'public/homes#top' 
+  root to:'public/homes#top'
   #admin用
   namespace :admin do
     get 'order_items/show'
     get 'orders/show'
     resources :customers, only: [:index, :show, :edit]
-    resources :genres, only: [:index, :edit]
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :new]
     get 'top' => 'homes#top'
   end
