@@ -18,6 +18,16 @@ class Customer < ApplicationRecord
      validates :telephone_number
    end
   
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
   
+  def full_name
+    last_name+"　"+first_name
+  end
+  
+  def full_name_kana
+    last_name_kana+"　"+first_name_kana
+  end
   
 end
