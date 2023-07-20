@@ -1,0 +1,80 @@
+<header>
+    <div class="container">
+      <span>LOGO</span>
+
+        　<% if admin_singed_in? %>
+            <% if request.fullpath.include? "/admin" %>
+             <# adminがログイン時のヘッダー %>
+              <li>
+               <%= link_to "商品一覧" admin_items_path %>
+              </li>
+              <li>
+               <%= link_to "会員一覧" admin_customers_path %>
+              </li>
+              <li>
+               <%= link_to "注文履歴一覧" admin_top_path %>
+              </li>
+              <li>
+               <%= link_to "ジャンル一覧" admin_genres_path %>
+              </li>
+              <li>
+               <%= link_to "ログアウト" destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+              </li>
+            <% else %>
+            <%# publicがログアウト時のヘッダー　%>
+            　<li>
+               <%= link_to "About" homes_about_path, class: 'nav-link text-light' %>
+              </li>
+              <li>
+               <%= link_to "商品一覧" items_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "新規登録" new_customer_registration_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "ログイン" new_customer_session_path, class: 'nav-link text-light' %>
+               
+              </li>
+            <% end %>
+        　<% elsif public_singed_in? %>
+        　<%# publicがログイン時のヘッダー　%>
+        　　　<li>
+               <%= link_to "マイページ" customers_mypage_path(current_customer.id), class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "商品一覧" items_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "カート" public_cart_items_index_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "ログアウト" destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+               
+              </li>
+        　<% else %>
+        　<%# public,adminのどちらもログアウト時のヘッダー　%>
+        　　　<li>
+               <%= link_to "About" homes_about_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "商品一覧" admin_items_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "新規登録" new_customer_registration_path, class: 'nav-link text-light' %>
+               
+              </li>
+              <li>
+               <%= link_to "ログイン" new_admin_session_path, class: 'nav-link text-light' %>
+               
+              </li>
+        　<% end %>
+        
+    </div>
+</header>
