@@ -9,21 +9,24 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   #ルートパス
-  root to:'public/homes#top' 
+  root to:'public/homes#top'
   #admin用
   namespace :admin do
-    get 'order_items/show'
-    get 'orders/show'
-    resources :customers, only: [:index, :show, :edit]
-    resources :genres, only: [:index, :edit]
-    resources :items, only: [:index, :show, :edit, :new]
-    get 'admin/top' => 'homes#top'
+
+    get 'order_item' => 'order_items#show'
+    get 'orders' => 'orders#show'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :show, :edit, :new, :create, :update]
+    get 'top' => 'homes#top'
+
   end
   #customer用
   scope module: :public do
-    resources :addresses, only: [:index, :edit]
-    resources :orders, only: [:new, :index, :show, :complete]
-    get 'cart_items/index'
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    get 'orders/complete'
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
