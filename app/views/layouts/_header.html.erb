@@ -9,6 +9,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         　<% if admin_signed_in? %>
             <% if request.fullpath.include? "/admin" %>
+            
              <%# adminがログイン時のヘッダー　%>
               <li class="nav-item">
                <%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-light" %>
@@ -42,6 +43,9 @@
             <% end %>
         　<% elsif customer_signed_in? %>
         　<%# publicがログイン時のヘッダー　%>
+        　    <%= form_with model: @customer, url: customer_session_path do |f| %>
+        　    ようこそ、<%= f.last_name %>さん!
+        　    <% end %>
         　    <li class="nav-item">
                <%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-light" %>
               </li>
@@ -49,7 +53,7 @@
                <%= link_to "商品一覧", items_path, class: "btn btn-sm btn-light" %>
               </li>
               <li class="nav-item">
-               <%= link_to "カート", public_cart_items_index_path, class: "btn btn-sm btn-light" %>
+               <%= link_to "カート", cart_items_path, class: "btn btn-sm btn-light" %>
               </li>
               <li class="nav-item">
                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-light" %>
