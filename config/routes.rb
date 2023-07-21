@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'orders/show'
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :show, :edit, :new]
+    resources :items, only: [:index, :show, :edit, :new, :create, :update]
     get 'top' => 'homes#top'
   end
   #customer用
