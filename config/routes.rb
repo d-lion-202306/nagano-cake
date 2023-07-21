@@ -12,12 +12,14 @@ Rails.application.routes.draw do
   root to:'public/homes#top'
   #admin用
   namespace :admin do
+
     get 'order_item' => 'order_items#show'
     get 'orders' => 'orders#show'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :new, :create, :update]
     get 'top' => 'homes#top'
+
   end
   #customer用
   scope module: :public do
