@@ -7,23 +7,20 @@
  
   
    <!--ここからメイン-->
-    <div class="col-md-9 offset-md-1 bg-success">
+    <div class="col-md-9 ml-3">
     　<div class="row">
     <!--写真-->
-    <!-- 
-    <div class="col-4">
-      <= image_tag @item.get_image, class:"card-img-top"; %>
-    </div>
-    <!--本文-->
-     <!-- 
-    <div class="col-4">
-      <p class=""><= @item.name %></p>
-      <p class=""><= @item.introduction %></p>
-      <p class="">￥<= @item.tax_price.to_s(:delimited) %>（税込）</p>
+        <div class="col-4">
+          <%= image_tag @item.get_image, size: "150x200", class:"card-img-top"; %>
+        </div>
+    <!--紹介--> 
+    <div class="col-5 ml-3">
+      <h3 class="mt-1"><b><%= @item.name %></b></h3>
+      <h5 class="mt-4"><%= @item.introduction %></h5>
+      <h5 class="mt-4"><b>￥<%= @item.tax_price.to_s(:delimited) %></b><small>（税込）</small></h5>
       
-    -->
-   
-   
+      <!--個数選択-->
+      <!--カートに入れる-->
     </div>
   　</div>
   </div>
