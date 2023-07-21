@@ -1,2 +1,31 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<% if @item.errors.any? %>
+  <div>
+    <%= @item.errors.count %>errors prohibited this obj form being saved:
+     <ul>
+     <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+     </ul>
+  </div>
+<% end %>
+
+<h3>商品新規登録</h3>
+<%= form_with model: @item, url: admin_items_path do |f| %>
+  <%= f.label :image, "商品画像" %>
+  <%= f.file_field :image, accept: "image/*" %><br>
+
+  <%= f.label :name, "商品名" %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :introduction, "商品説明" %>
+  <%= f.text_area :introduction %><br>
+
+  <%= f.label :genre_id, "ジャンル" %>
+  <%= f.collection_select(:genre_id, @genre, :id, :name,{prompt: "--選択してください--"}) %><br>
+
+  <%= f.label :non_tax_price, "税抜価格" %>
+  <%= f.number_field :non_tax_price %>円<br>
+
+  販売ステータス<%= f.radio_button :is_active, "true" %>販売中<%= f.radio_button :is_active, "false" %>販売停止中<br>
+  <%= f.submit '新規登録' %>
+<% end %>
