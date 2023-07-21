@@ -1,2 +1,39 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+  <!--サイドバー-->
+    <div class="col-md-2 bg-primary">
+      <%= render 'sidebar', genres: @genres %>
+    </div>
+ 
+  
+   <!--ここからメイン-->
+    <div class="col-md-9 ml-5 bg-success">
+    　<div class="p-0 d-flex">  
+       <h3 class="text-left m-0"><b>商品一覧</b></h3>
+       <p class="mt-2">（全<%= @items.count %>件）</p>
+      </div>
+    <!--ここから一覧-->
+  　<div class="card-list-containar py-5">
+  　 <% @items.each do |item| %>
+      <div class="card w-25 mx-auto mt-4 shadow-lg">
+        <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image, class:"card-img-top"; %>
+        <% end %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-10">
+            <p class="card-title">
+              <%= link_to(item_path(item.id), class:"text-dark") do %>
+              <strong><%= item.name %></strong>
+              <% end %>
+            </p>
+            <p class="card-text">￥<%= item.price %></p>
+          </div>
+        </div>
+     </div>
+     </div>
+    <% end %>
+    </div>
+  　</div>
+  </div>
+</div>
