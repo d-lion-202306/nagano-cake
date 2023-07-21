@@ -1,2 +1,30 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+  <!--サイドバー-->
+    <div class="col-md-2 bg-primary">
+      <%= render 'sidebar', genres: @genres %>
+    </div>
+ 
+  
+   <!--ここからメイン-->
+    <div class="col-md-9 offset-md-1 bg-success">
+    　<div class="row">
+    <!--写真-->
+    <!-- 
+    <div class="col-4">
+      <= image_tag @item.get_image, class:"card-img-top"; %>
+    </div>
+    <!--本文-->
+     <!-- 
+    <div class="col-4">
+      <p class=""><= @item.name %></p>
+      <p class=""><= @item.introduction %></p>
+      <p class="">￥<= @item.price %>（税込）</p>
+      
+    -->
+   
+   
+    </div>
+  　</div>
+  </div>
+</div>
