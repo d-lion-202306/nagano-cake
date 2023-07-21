@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit]
     resources :items, only: [:index, :show, :edit, :new]
-    get 'top' => 'homes#top'
+    get 'admin/top' => 'homes#top'
   end
   #customer用
   scope module: :public do
