@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  belongs_to :customers
+  belongs_to :customer
   
   with_options presence: true do
      validates :name
