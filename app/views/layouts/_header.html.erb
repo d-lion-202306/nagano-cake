@@ -43,9 +43,9 @@
             <% end %>
         　<% elsif customer_signed_in? %>
         　<%# publicがログイン時のヘッダー　%>
-        　    <%= form_with model: @customer, url: customer_session_path do |f| %>
-        　    ようこそ、<%= f.last_name %>さん!
-        　    <% end %>
+        　    <%#= form_with model: @customer, url: customer_session_path do |f| %>
+        　   <%# ようこそ、<%= f.last_name %#
+        　    <%# end %>
         　    <li class="nav-item">
                <%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-light" %>
               </li>
