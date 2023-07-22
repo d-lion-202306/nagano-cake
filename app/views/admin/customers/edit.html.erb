@@ -1,2 +1,68 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div>
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>errors prohibited this obj form being saved:
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div class="container mt-4">
+  <div class="row">
+      <h4 class=class="mb-4 text-center"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+      
+      
+       <table class="table table-borderless">
+           <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+           <tr>
+               <td>会員ID</td>
+               <td><%= @customer.id %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "氏名" %></td>
+               <td><%= f.text_field :last_name, autoforcus: true, autocomplete: "last_name",  placeholder: "令和" %></td>
+               <td><%= f.text_field :first_name, autoforcus: true, autocomplete: "first_name",  placeholder: "道子" %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "フリガナ" %></td>
+               <td><%= f.text_field :last_name_kana, autoforcus: true, autocomplete: "last_name_kana",  placeholder: "レイワ" %></td>
+               <td><%= f.text_field :first_name_kana, autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ミチコ" %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "郵便番号" %></td>
+               <td><%= f.text_field :post_code, autoforcus: true, autocomplete: "post_code",  placeholder: "0000000" %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "住所" %></td>
+               <td><%= f.text_field :address, autoforcus: true, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0" %> </td>
+           </tr>
+           <tr>
+               <td><%= f.label "電話番号" %></td>
+               <td><%= f.text_field :telephone_number, autoforcus: true, autocomplete: "phone_number",  placeholder: "0000000000" %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "メールアドレス" %></td>
+               <td><%= f.text_field :email, autoforcus: true, autocomplete: "email",  placeholder: "sample@exanple.com" %></td>
+           </tr>
+           <tr>
+               <td><%= f.label "会員ステータス" %></td>
+               
+                   <td>
+                       <%= f.radio_button :is_deleted, false, checked: @customer.is_deleted == false, class: 'custom-control-input', id: 'status-active' %>
+                       <%= f.label :is_deleted, '有効', class: 'custom-control-label', for: 'status-active' %>
+                   </td>
+                   <td>
+                       <%= f.radio_button :is_deleted, true, checked: @customer.is_deleted == true, class: 'custom-control-input', id: 'status-deleted' %>
+                       <%= f.label :is_deleted, '退会', class: 'custom-control-label', for: 'status-deleted' %>
+                    </td>
+           </tr>
+           <tr>
+               <td></td>
+               <td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+           </tr>
+           <% end %>
+        </table>
+  </div>
+</div>
