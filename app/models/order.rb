@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
-  belongs_to :customers
+  belongs_to :customer
   
   with_options presence: true do
      validates :name
@@ -10,4 +10,5 @@ class Order < ApplicationRecord
      validates :postage
      validates :total_payment
      validates :order_status
+ end
 end

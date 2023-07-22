@@ -1,10 +1,13 @@
-<table class="border mx-auto mt-3 w-75 text-center">
-  <tr class="border-bottom">
+<table class="border border-dark mx-auto mt-3 w-100">
+  <tr class="border-bottom border-dark text-center">
     <th>ジャンル検索</th>
   </tr>
     <% genres.each do |genre| %>
-    <tr class="mb-5">
-      <td><% genre.name %></td>
+    <tr>
+      <td class="text-left pl-3 py-1"><%= genre.name %></td>
     </tr>
     <% end %>
+    <tr>
+      <td class="pb-5"><p></p></td>
+    </tr>
 </table>
