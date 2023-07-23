@@ -21,7 +21,7 @@
               <td class= "<%= customer.is_deleted ? 'text-secondary' : 'text-success' %>"><%= customer.is_deleted ? '退会済み' : '有効' %></td>
           </tr>
           <% end %>
-          <%= paginate @customers %>
       </table>
+      <%= paginate @customers %>
   </div>
 </div>
