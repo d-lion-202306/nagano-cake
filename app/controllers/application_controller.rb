@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  
+  def header
+    @customer = Customer.find(params[:id])
+  end
+  
   private
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)
@@ -11,7 +16,7 @@ class ApplicationController < ActionController::Base
   def
     after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :customer
-        homes_about_path
+        root_path
     elsif resource_or_scope == :admin
           new_admin_session_path
     end
