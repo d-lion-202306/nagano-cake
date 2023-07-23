@@ -17,7 +17,7 @@
           <%= form_with model: @genre, url: admin_genres_path do |f| %>
             <%= f.label :name, 'ジャンル名' %>
             <%= f.text_field :name %>
-            <%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success mt-4" %>
+            <%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %>
           <% end %>
         </div>
       </div>
@@ -26,8 +26,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">ジャンル名</th>
-              <th scope="col"></th>
+              <th>ジャンル名</th>
+              <th></th>
             </tr>
           </thead>
 
