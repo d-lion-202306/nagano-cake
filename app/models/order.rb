@@ -11,4 +11,9 @@ class Order < ApplicationRecord
      validates :total_payment
      validates :order_status
  end
+ 
+ enum payment_method: {
+   クレジットカード: 0,
+   銀行振込: 1
+ }
 end
