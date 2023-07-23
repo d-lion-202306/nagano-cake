@@ -24,8 +24,7 @@
           <!--item_id-->
           <%= f.hidden_field :item_id, :value => @item.id %>
           <!--個数選択-->
-          <%= f.label :amount, "個数選択", class:"mt-3" %>
-          <%= f.select :amount, *[1..10] %>
+          <%= f.select :amount, *[1..10], {include_blank: '個数選択'} %>
           <!--カートに入れる-->
           <%= f.submit 'カートに入れる', class:"btn btn-success ml-5" %>
         <% end %>

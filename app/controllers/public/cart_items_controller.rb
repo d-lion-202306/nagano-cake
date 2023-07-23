@@ -25,7 +25,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    cart_item_params[:item_id]
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      flash[:notice] = "更新しました"
+    else
+      flash[:alert] = '変更に失敗しました'
+    end
+    redirect_to cart_items_path
   end
 
   def destroy

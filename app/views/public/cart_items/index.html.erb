@@ -23,7 +23,14 @@
        <td><%= image_tag cart_item.item.get_image %>
            <%= cart_item.item.name %></td>
         <td><%= cart_item.item.tax_price.to_s(:delimited) %></td>
-        <td><%= cart_item.amount %></td>
+        <!--数量変更-->
+        <td>
+          <%= form_with model: cart_item, local: true do |f| %>
+            <%= f.hidden_field :item_id, value: cart_item.item.id %>
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit "変更", class:'btn btn-success' %>
+          <% end %>
+        </td>
         <td><%= cart_item.subtotal_payment.to_s(:delimited) %></td>
         <td><%= link_to "削除する", cart_item_path(cart_item.id, cart_item), method: :delete, class: "btn btn-danger" %></td>
      </tr>
@@ -34,7 +41,7 @@
   </div>
   <div class="d-flex mt-3">
     <p style="width:500px"><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></p>
-    
+
       <p class="border border-dark py-2 pl-2 offset-5" style="width:150px">合計金額</p>
       <p class="border border-dark py-2 pl-2" style="width:150px">
         <% if current_customer.cart_items.present? %>
