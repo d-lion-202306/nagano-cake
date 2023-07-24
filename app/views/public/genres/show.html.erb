@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <div class="row">
+  <!--サイドバー-->
+    <div class="col-md-2">
+      <%= render 'public/items/sidebar', genres: @genres %>
+    </div>
+ 
+  
+<!--ここからメイン-->
+    <div class="col-9 ml-5">
+    　<div class="p-0 d-flex">
+       <h3 class="text-left m-0"><b><%= @genre.name %>一覧</b></h3>
+       <p class="mt-2">（全<%= @items.count %>件）</p>
+      </div>
+    <!--一覧-->
+      <div class="base-container mw-xl">
+        <%= render 'public/items/index', items: @genre.items %>
+      </div>
+    </div>
+  </div>
+</div>

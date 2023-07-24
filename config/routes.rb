@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get  'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch  'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
+    resources :genres, only: [:show]
     get 'homes/about' => 'homes#about'
   end
 
