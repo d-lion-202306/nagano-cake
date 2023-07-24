@@ -1,4 +1,4 @@
-<h5>注文情報入力</h5>
+<h4>注文情報入力</h4>
 <p>支払方法</p>
 <%= form_with model: @order, url: orders_confirm_path do |f| %>
   <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
@@ -12,6 +12,7 @@
   <%= f.radio_button :address_number, 1 %>
   <%= f.label :address_number_1, "ご自身の住所" %>
   <%= current_customer.address %><br>
+  <%= current_customer.last_name %><%= current_customer.first_name %><br>
 
   <%= f.radio_button :address_number, 2 %>
   <%= f.label :address_number_2, "登録済住所から選択" %>

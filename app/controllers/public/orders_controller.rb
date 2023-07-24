@@ -11,12 +11,12 @@ class Public::OrdersController < ApplicationController
         order_item = OrderItem.new
         order_item.item_id = cart.item_id
         order_item.order_id = @order.id
-        order_item.order_amount = cart.amount
-        order_item.order_price = cart.item.non_tax_price
+        order_item.amount = cart.amount
+        order_item.tax_price = cart.item.non_tax_price
         order_item.save
-      end
-      redirect_to orders_complete_path
+        end
       cart_items.destroy_all
+      redirect_to complete_orders_path
     else
       @order = Order.new(order_params)
       render :new
@@ -63,7 +63,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:name, :address, :total_payment, :post_code, :postage, :payment_method)
+    params.require(:order).permit( :customer_id, :name, :address, :total_payment, :post_code, :postage, :payment_method)
   end
 
   def address_params
