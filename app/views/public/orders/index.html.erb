@@ -1,10 +1,10 @@
 <div class="container" >
   <div class="row">
-    <h4 class="bg-light d-inline-block mb-2 offset-2 p-1">注文履歴一覧</h4>
+    <h4 class="bg-light d-inline-block mt-sm-1 offset-2 p-0">注文履歴一覧</h4>
     <% if @orders.count == 0 %>
       <h4>履歴はありません</h4>
     <% else %>
-      <table class="table">
+      <table class="table-bordered">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -35,12 +35,12 @@
               <%= order.order_status %>
             </td>
             <td>
-              <%= link_to "表示する", order_path(order.id), class:'btn btn-primary' %>
+              <%= link_to "表示する", order_path(order.id), class:'btn-sm btn-primary' %>
             </td>
           </tr>
         <% end %>
       </table>
+      <%= paginate @orders %>
     <% end %>
-    <%= paginate @orders %>
   </div>
 </div>
