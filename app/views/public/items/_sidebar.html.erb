@@ -4,7 +4,11 @@
   </tr>
     <% genres.each do |genre| %>
     <tr>
-      <td class="text-left pl-3 py-1"><%= genre.name %></td>
+      <td class="text-left pl-3 py-1">
+        <%= link_to(genre_path(genre.id), class:"text-dark") do %>
+          <%= genre.name %>
+        <% end %>
+      </td>
     </tr>
     <% end %>
     <tr>
