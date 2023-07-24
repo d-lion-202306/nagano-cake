@@ -1,16 +1,16 @@
 <div class="container">
-  <div>
-    <h2 class="bg-light d-inline-block mb-2 mt-5 p-1">ログイン</h2></br>
+  <div class="mx-auto" style="width:800px">
+    <h2 class="bg-light d-inline-block mb-2 p-1">ログイン</h2></br>
      <p class="ml-2 bg-light d-inline-block">会員の方はこちらからログイン</p>
        <%= form_with model: @customer, url: customer_session_path do |f| %>
          <table class="ml-5">
            <tr>
-             <td class="py-2"><%= f.label :メールアドレス %></td>
-             <td class="pl-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %></td>
+             <td class="py-2" style="width:150px"><%= f.label :メールアドレス %></td>
+             <td class="pl-3"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", style:"width:400px" %></td>
            </tr>
            <tr>
              <td class="py-2"><%= f.label :パスワード %></td>
-             <td class="pl-3"><%= f.password_field :password, autocomplete: "current-password" %></td>
+             <td class="pl-3"><%= f.password_field :password, autocomplete: "current-password", style:"width:400px" %></td>
            </tr>
            <tr>
               <td class="py-2"></td>
@@ -21,7 +21,7 @@
 
          <div class="mt-5">
            <p class="mb-0 bg-light d-inline-block">会員登録がお済みでない方</p>
-　         <P class="mt-0 ml-2"><%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。</p>
+　         <P class="mt-0 ml-5"><%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。</p>
 　       </div>
   </div>
 </div>

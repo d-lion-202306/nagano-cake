@@ -1,2 +1,75 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+      <h4 class="bg-light">注文履歴詳細</h4>
+      
+      <div>
+          <p>購入者</p>
+          <p>
+            <!--顧客ごとの注文履歴詳細を作る場合追加-->
+            <%#= link_to admin_customer_path(params[:id]), class="link-dark" do %>
+              <%= @order.name %>
+            <%# end %>
+            </p>
+      </div>
+      
+      <div>
+          <p>注文日</p>
+          <p><%= @order.create_at %></p>
+      </div>
+      <div>
+          <p>配送先</p>
+          <p><%= @address.post_code %><%= @address.address %></p></br>
+          <p><%= @address.name %></p>
+      </div>
+      <div>
+          <p>支払方法</p>
+          <p><%= @order.payment_method %></p>
+      </div>
+      <div>
+          <p>注文ステータス</p>
+          <p>
+            <%= form_with(model: @order, url: admin_order_path(@order.id), local: true, class: "form-row") do |f| %>
+                 <%= f.select :order_status, Order.order_statuses_kyes, class: "order_status", class:"form-control form-control-sm col-6"  %>
+                 <%= f.submit "更新" , class: "btn btn-outline-success" %>
+            <% end %>
+          </p>
+      </div>
+      <table class ="table">
+          <tr class="bg-light">
+              <th>商品名</th>
+              <th>単価</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>制作ステータス</th>
+          </tr>
+          <% @order_items.each do |order_item| %>
+          <tr>
+              <td><%= order_item.name %></td>
+              <td><%= order_item.tax_price %></td>
+              <td><%= order_item.amount %></td>
+              <td><%= order_item.subtotal_order_price %></td>
+              <td>
+                <%= form_with(model: order_item, url: admin_order_path(order_item.id), local: true, class: "form-row") do |f| %>
+                    <%= f.select :production_status, Order_item.production_status_kyes, class: "production_status", class:"form-control form-control-sm col-6"  %>
+                    <%= f.submit "更新" , class: "btn btn-outline-success" %>
+                <% end %>
+              </td>
+          </tr>
+          <% end %>
+      </table>
+      <div>
+        <p>商品合計</p>
+        <p><%= @order_items.subtotal_order_price %></p>
+      </div>
+      <div>
+        <p>送料</p>
+        <p><%= @order.postage %></p>
+      </div>
+      <div>
+        <p>請求金額合計</p>
+        <p><%= @order.total_paayment_of_billed %></p>
+      </div>
+      
+      
+  </div>
+ </div>

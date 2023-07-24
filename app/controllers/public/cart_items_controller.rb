@@ -17,7 +17,8 @@ class Public::CartItemsController < ApplicationController
       @cart_items = current_customer.cart_items.all
       redirect_to cart_items_path
     else
-      render 'index'
+      flash[:notice] = "個数を選択してください"
+      redirect_to request.referer
     end
     #@cart_item.customer_id = current_customer.id
     #@cart_item.save

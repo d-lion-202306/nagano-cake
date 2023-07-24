@@ -1,30 +1,19 @@
 <div class="container">
-  <h3 class="bg-light d-inline-block mb-2 mt-5 offset-1 p-1">会員情報編集</h3>
-  <!--エラー-->
-   <% if @customer.errors.any? %>
-   <div>
-       <%= @customer.errors.count %>errors prohibited this obj form being saved:
-         <ul>
-         <% @customer.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-         <% end %>
-         </ul>
-   </div>
-  <% end %>
-<!--ここまでエラー-->
+  <h3 class="bg-light d-inline-block mb-2 offset-1 p-1">会員情報編集</h3>
    <div class="my-3 ml-2">
+    <%= flash[:notice] %>
       <table>
-       <%= form_with model: @customer, url: customers_information_path, method: :patch, local: true do |f| %>
+       <%= form_with model: @customer,url: customers_information_path, local: true do |f| %>
         <tr>
           <td class="py-2">氏名</td>
-          <td class="col-10 pl-5">
+          <td class="pl-5">
             <%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"氏" %>
-            <%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名", class:"ml-5" %></td>
+            <%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名", class:"ml-3" %></td>
         </tr>
         <tr>
           <td class="py-2">カナ</td>
           <td class=" pl-5"><%= f.text_field :last_name_kana, autofocus: true, id:"inputLastNameKana", placeholder:"カナ" %>
-              <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstNameKana", placeholder:"カナ", class:"ml-5" %></td>
+              <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstNameKana", placeholder:"カナ", class:"ml-3" %></td>
         </tr>
         <tr>
       　　<td class"py-2">郵便番号</td>
@@ -44,7 +33,7 @@
         </tr>
         <tr>
           <td class="py-5"></td>
-          <td class=" pl-5"><%= f.submit "編集内容を保存", class:'btn btn-success' %><%= link_to "退会する", customers_confirm_withdraw_path, class:"btn btn-danger offset-1" %></td>
+          <td class=" pl-5"><%= f.submit "編集内容を保存", class:'btn btn-success' %><%= link_to "退会する", customers_confirm_withdraw_path, class:"btn btn-danger offset-3" %></td>
         </tr>
       </table>
       <% end %>

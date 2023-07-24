@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container">
   <div class="row">
   <!--サイドバー-->
     <div class="col-2">
@@ -9,37 +9,32 @@
     <div class="col-9 ml-5">
     　<div class="p-0 d-flex">
        <h3 class="text-left m-0"><b>商品一覧</b></h3>
-       <p class="mt-2">（全<%= @items.count %>件）</p>
+       <p class="mt-2">（全<%= @all_items.count %>件）</p>
       </div>
     <!--ここから一覧-->
     <div class="base-container mw-xl">
-      <div class="texts-wrapper">
-        <div class="contents-title text-center">
-          <div class="row justify-content-center">
              <div class="card-deck ml-4 mb-2 text-decoration-none" >
              <% @items.each do |item| %>
-               <div class="text-card-container" style="width:200px">
-                  <div class="card content-card">
+               <div class="text-card-container mt-2" style="width:200px">
+                  <div class="card content-card" style="height:180px">
                     <div class="card-header p-0">
-                      <%= link_to item_path(item.id) do %>
                       <%= image_tag item.get_image, size: "150x100", class:"card-img-top"; %>
-                      <% end %>
                     </div>
-                    <div class="card-body d-block align-items-center">
-                      <p class="card-title text-left">
-                      <%= link_to(item_path(item.id), class:"text-dark") do %>
+                    <div class="card-body pt-1 pl-2">
+                      <p class="card-title text-left mb-1" style="height:2rem"><b>
+                      <%= link_to(item_path(item.id), class:"text-dark", style:"font-size:12px") do %>
                       <%= item.name %>
-                      <% end %></p>
+                      <% end %></b></p>
                       </p>
-                      <p class="card-text text-left">￥<%= item.non_tax_price %></p>
+                      <p class="card-text text-left mt-1">￥<%= item.non_tax_price %></p>
                     </div>
                  </div>
                 </div>
              <% end %>
             </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="offset-4">
+      <p><%= paginate @items %></p>
     </div>
 
     </div>

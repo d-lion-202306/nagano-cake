@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <header class="border-bottom border-dark mb-5"><%= render 'layouts/header', customer: current_customer %></header>
+    <main><%= yield %></main>
+    <footer class="border-top border-dark"></footer></footer>
   </body>
 </html>
