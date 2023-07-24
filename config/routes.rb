@@ -24,13 +24,17 @@ Rails.application.routes.draw do
   #customer用
   scope module: :public do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create]
-    resources :cart_items, only: [:index, :update, :destroy, :create] do
+    resources :orders, only: [:new, :index, :show, :create] do
       collection do
-        delete "destroy_all"   
+        get 'complete' => 'orders#complete'
       end
     end
-    get 'orders/complete'
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+    post 'orders/confirm'
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
