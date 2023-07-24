@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
     get 'homes/about' => 'homes#about'
+    get 'search'=> 'searches#search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

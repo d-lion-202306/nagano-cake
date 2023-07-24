@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9 offset-1">
+      <h4 style="display:inline">検索結果</h4> 
+      <h6 style="display:inline;">(全<%= @records.count %>件)</h6>
+        <% if @records.empty? %>
+          <div class="text-center" style="margin:30px;">
+            <p>該当する商品はありません</p>
+          </div>
+        <% end %>
+        <%= render 'public/items/index', items: @records %>
+    </div>
+  </div> 
+</div>

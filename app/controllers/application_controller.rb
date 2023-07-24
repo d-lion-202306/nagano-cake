@@ -20,5 +20,5 @@ class ApplicationController < ActionController::Base
     elsif resource_or_scope == :admin
           new_admin_session_path
     end
-end
+  end
 end
