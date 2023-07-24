@@ -1,17 +1,5 @@
 <div class="container">
   <h3 class="bg-light d-inline-block mb-2 offset-1 p-1">会員情報編集</h3>
-  <!--エラー-->
-   <% if @customer.errors.any? %>
-   <div>
-       <%= @customer.errors.count %>errors prohibited this obj form being saved:
-         <ul>
-         <% @customer.errors.full_messages.each do |message| %>
-           <li><%= message %></li>
-         <% end %>
-         </ul>
-   </div>
-  <% end %>
-<!--ここまでエラー-->
    <div class="my-3 ml-2">
     <%= flash[:notice] %>
       <table>

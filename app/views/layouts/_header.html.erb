@@ -9,8 +9,8 @@
       <ul class="navbar-nav ms-auto ">
        <% if request.fullpath.include? "/admin" %>
         　<% if admin_signed_in? %>
-            
-            
+
+
              <%# adminがログイン時のヘッダー　%>
               <li class="nav-item">
                <%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-light" %>
@@ -45,7 +45,7 @@
         　<% else %>
         　   <% if customer_signed_in? %>
         　<%# customerがログイン時のヘッダー　%>
-        　  <div class= "nav-item pe-auto">ようこそ、<%= customer.last_name %>さん！</div>
+        　  <div class= "nav-item">ようこそ、<%= customer.last_name %>さん！</div>
         　    <li class="nav-item">
                <%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-light" %>
               </li>
