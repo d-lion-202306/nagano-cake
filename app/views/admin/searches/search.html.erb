@@ -8,8 +8,8 @@
             <p>該当する商品はありません</p>
           </div>
         <% end %>
-        <%= render 'public/items/index', items: @records %>
+    　<%= render 'admin/items/index', items: @records %>
     </div>
-        <div class="mx-auto my-2"><%= paginate @page %></div>
+    <div class="offset-5 my-2"><%= paginate @page %></div>
   </div> 
 </div>
