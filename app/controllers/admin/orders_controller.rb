@@ -1,33 +1,21 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    @address = Address.find(params[:id])
-    
-    items = Item.find(params[:id])
-    order_items = Order_item.find(params[:id])
-    #@ordersにItemモデルとOrder_itemモデルの情報を追加
-    @order_items = items | order_items
-    
   end
   
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admin_orders_path
-    
-    @order_items = Order_item.find(params[:id])
-    @order_items.update(order_item_params)
-    redirect_to admin_orders_path
+    @order_items = OrderItem.where(order_id: params[:id])
+    if @order.update(order_params)
+       @order_items.update_all(production_status: 1) if @order.order_status == "paid_up"
+      ## ①注文ステータスが「入金確認」のとき、製作ステータスを全て「製作待ち」に更新する
+    redirect_to admin_order_path(@order.id)
+    end
   end
-  
+
   private
   
   def order_params
     params.require(:order).permit(:order_status)
   end
-  
-  def order_item_params
-    params.require(:order_item).permit(:production_status)
-  end
-
 end

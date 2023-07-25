@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
       <h4 class="bg-light">注文履歴一覧</h4>
-      
       <table class ="table">
           <tr class="bg-light">
               <th>購入日時</th>
@@ -13,13 +12,17 @@
           <tr>
               <td>
                   <!--注文履歴詳細へのパス-->
-                  <%= link_to admin_order_path(order.id), class="link-dark" do %>
-                   <%= order.created_at %>
+                  <%= link_to admin_order_path(order.id) do %>
+                   <%= order.created_at .strftime('%Y/%m/%d/%H:%M:%S') %>
                   <% end %>
               </td>
               <td><%= order.name %></td>
-              <td><%= order.amount %></td>
-              <td><%= order.order_status %> </td>
+              <td>
+                <% order.order_items.each do |order_item| %>
+                 <%= order_item.amount %>
+                <% end %>
+              </td>
+              <td><%= order.order_status_i18n %></td>
           </tr>
           <% end %>
       </table>
