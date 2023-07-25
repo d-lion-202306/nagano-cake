@@ -31,18 +31,14 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == '2'
-      if Address.exists?(name: params[:order][:registered])
-        @order.name = Address.find(params[:order][:registered]).name
-        @order.address = Address.find(params[:order][:registered]).address
-      else
-        render :new
-      end
+        add = Address.find(params[:order][:registered])
+        @order.name = add.name
+        @order.address = add.address
+        @order.post_code = add.post_code
     elsif params[:order][:address_number] == '3'
-      address_new = current_customer.address.new(address_params)
-      if address_new.save
-      else
-        render :new
-      end
+        @order.post_code = params[:order][:post_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
     else
       redirect_to items_path
     end
