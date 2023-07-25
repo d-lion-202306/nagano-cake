@@ -4,11 +4,13 @@
       <%= render 'public/items/sidebar', genres: @genres %>
     </div>
     <div class="col-lg-8">
-      <div class="bgi">
-        ようこそ　ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
+      <div class="bgi" style="height:200px">
+        <div class="top-content  mx-auto" style="width:400px">
+          <p class="ml-3">ようこそ　ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。</p>
+        </div>
       </div>
 
       <h3>新着商品</h3>
@@ -43,8 +45,10 @@
           </div>
         </div>
       </div>
+      <div class="text-right">
+        <%= link_to "全ての商品を見る>", items_path %>
+      </div>
     </div>
-    <%= link_to "全ての商品を見る>", items_path %>
   </div>
 </div>
 

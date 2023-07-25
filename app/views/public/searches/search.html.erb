@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-9 offset-1">
-      <h4 style="display:inline">"<%= @word %>"検索結果</h4> 
+   <!--サイドバー-->
+    <div class="col-2">
+      <%= render 'public/items/sidebar', genres: @genres %>
+    </div>
+    <div class="col-9 ml-5">
+      <h4 style="display:inline"><b>"<%= @word %>"検索結果</b></h4> 
       <h6 style="display:inline;">(全<%= @records.count %>件)</h6>
         <% if @records.empty? %>
           <div class="text-center" style="margin:30px;">
             <p>該当する商品はありません</p>
           </div>
         <% end %>
+         <!--ここから一覧-->
         <%= render 'public/items/index', items: @records %>
     </div>
         <div class="mx-auto my-2"><%= paginate @page %></div>
