@@ -3,5 +3,6 @@ class Public::SearchesController < ApplicationController
     @word = params[:word]
     @records = Item.search_for(@word)
     @page = @records.page(params[:page]).per(8)
+    @genres = Genre.all
   end
 end
