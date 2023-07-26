@@ -1,39 +1,47 @@
-<h3>商品詳細</h3>
-
-<%= image_tag @item.get_image %>
-
-<table>
-  <tr>
-    <th>商品名</th>
-    <th><%= @item.name %></th>
-  </tr>
-  <tr>
-    <th>商品説明</th>
-    <th><%= @item.introduction %></th>
-  </tr>
-  <tr>
-    <th>ジャンル</th>
-    <th><%= @item.genre.name %></th>
-  </tr>
-  <tr>
-    <th>
-      税込価格<br>
-      (税抜価格)
-    </th>
-    <th>
-      <%= @item.tax_price.to_s(:delimited) %>
-      (<%= @item.non_tax_price %>)円
-    </th>
-  </tr>
-  <tr>
-    <th>販売ステータス</th>
-    <th>
-      <% if @item.is_active %>
-        販売中
-      <% else %>
-        販売停止中
-      <% end %>
-    </th>
-  </tr>
-</table>
-<%= link_to "編集する", edit_admin_item_path(@item.id) %>
+<div class="container mt-4">
+  <div class="row no-gutters">
+      <h4 class="mb-4 bg-light " style="height:30px">商品詳細</h4>
+      <div class="d-flex align-items-center">
+        <%= image_tag @item.get_image, :size => '300x200' %>
+      </div>
+      <div class=" text-align-center pt-5">
+          <table class="table table-borderless">
+            <tr>
+              <th>商品名</th>
+              <th><%= @item.name %></th>
+            </tr>
+            <tr>
+              <th>商品説明</th>
+              <th><%= @item.introduction %></th>
+            </tr>
+            <tr>
+              <th>ジャンル</th>
+              <th><%= @item.genre.name %></th>
+            </tr>
+            <tr>
+              <th>
+                税込価格<br>
+                (税抜価格)
+              </th>
+              <th>
+                <%= @item.tax_price.to_s(:delimited) %>
+                (<%= @item.non_tax_price %>)円
+              </th>
+            </tr>
+            <tr>
+              <th>販売ステータス</th>
+              <th>
+                <% if @item.is_active %>
+                  販売中
+                <% else %>
+                  販売停止中
+                <% end %>
+              </th>
+            </tr>
+          </table>
+        <div class="text_center">
+          <%= link_to "編集する", edit_admin_item_path(@item.id), class:"btn btn-success" %>
+        </div>
+      </div>
+  </div>
+</div>

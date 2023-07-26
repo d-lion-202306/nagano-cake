@@ -9,33 +9,51 @@
   </div>
 <% end %>
 
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-7">
-      <h4 class="mt-2 bg-light text-center">商品新規登録</h4>
-      <div class="ml-3">
-        <div class="flex-row">
+<div class="container mt-4">
+  <div class="row no-gutters">
+      <h4 class="mb-4 bg-light " style="height:30px">商品新規登録</h4>
+      <div class=" text-align-center pt-5">
+        <table class="table table-borderless">
           <%= form_with model: @item, url: admin_items_path do |f| %>
+          <tr>
+            <td>
             <%= f.label :image, "商品画像" %>
-            <%= f.file_field :image, accept: "image/*" %><br>
+            <%= f.file_field :image, accept: "image/*" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :name, "商品名" %>
+              <%= f.text_field :name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :introduction, "商品説明" %>
+              <%= f.text_area :introduction %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :genre_id, "ジャンル" %>
+              <%= f.collection_select(:genre_id, @genre, :id, :name,{prompt: "--選択してください--"}) %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= f.label :non_tax_price, "税抜価格" %>
+              <%= f.number_field :non_tax_price %>円
+            </td>
+          </tr>
+          <tr>
+            <td>販売ステータス<%= f.radio_button :is_active, :true %>販売中<%= f.radio_button :is_active, :false %>販売停止中</td>
+          </tr>
 
-            <%= f.label :name, "商品名" %>
-            <%= f.text_field :name %><br>
-
-            <%= f.label :introduction, "商品説明" %>
-            <%= f.text_area :introduction %><br>
-
-            <%= f.label :genre_id, "ジャンル" %>
-            <%= f.collection_select(:genre_id, @genre, :id, :name,{prompt: "--選択してください--"}) %><br>
-
-            <%= f.label :non_tax_price, "税抜価格" %>
-            <%= f.number_field :non_tax_price %>円<br>
-
-            販売ステータス<%= f.radio_button :is_active, :true %>販売中<%= f.radio_button :is_active, :false %>販売停止中<br>
-            <%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %>
+          <tr>
+            <td><%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %></td>
+          </tr>
           <% end %>
-        </div>
+        </table>
       </div>
-    </div>
   </div>
 </div>
