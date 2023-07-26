@@ -30,7 +30,7 @@
  <% end %>
 
 
-<table class="table table-bordered">
+<table class="table table-bordered col-10">
     <thead>
         <tr>
             <th>郵便番号</th>
@@ -40,7 +40,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @addresses.each do |address| %>
+        <% current_customer.addresses.each do |address| %>
         <%#配送先の一覧表示%>
         <tr>
             <td><%= address.post_code %></td>
