@@ -27,10 +27,10 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == '1'
-      @order.name = current_customer.address
+      @order.name = current_customer.full_name
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
-    elsif params[:order][:address_number] == '2'
+    elsif params[:order][:address_number] == '2' && current_customer.addresses.present?
         add = Address.find(params[:order][:registered])
         @order.name = add.name
         @order.address = add.address
@@ -40,7 +40,8 @@ class Public::OrdersController < ApplicationController
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
     else
-      redirect_to items_path
+      flash[:alert] = "配送先を選択してください"
+      redirect_to new_order_path
     end
     @postage = 800
     @cart_items = current_customer.cart_items.all

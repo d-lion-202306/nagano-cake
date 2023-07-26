@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(current_customer.id)
     if @customer.update(customer_params)
-      flash[:notice] ="更新しました"
+      flash[:alert] ="更新しました"
       redirect_to customers_mypage_path
     else
       flash[:notice] = @customer.errors.full_messages
