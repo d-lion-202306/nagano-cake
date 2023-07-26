@@ -2,8 +2,6 @@ class Public::AddressesController < ApplicationController
   
   def index
     @new_address = Address.new
-    @addresses = Address.all
-    #一覧ページから配送先のidを取得したい
   end
 
   def create
