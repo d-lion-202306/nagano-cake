@@ -2,7 +2,7 @@ class Admin::OrderItemsController < ApplicationController
 
   def show
       @orders = Order.page(params[:page])
-      @order = Order.find(params[:id])
+      #@order = Order.find(params[:id])
   end
   
   def update
