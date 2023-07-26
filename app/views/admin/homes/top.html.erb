@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
-      <h4 class="bg-light">注文履歴一覧</h4>
+      <h4 class="bg-light pb-2"><strong>注文履歴一覧</strong></h4>
       <table class ="table">
+        <thead>
           <tr class="bg-light">
               <th>購入日時</th>
               <th>購入者</th>
               <th>注文個数</th>
               <th>注文ステータス</th>
           </tr>
+        </thead>
+        <tbody>
           <% @orders.each do |order| %>
+          <% @total_amount = 0 %>
           <tr>
               <td>
                   <!--注文履歴詳細へのパス-->
@@ -19,13 +23,17 @@
               <td><%= order.name %></td>
               <td>
                 <% order.order_items.each do |order_item| %>
-                 <%= order_item.amount %>
+                 <% @total_amount += order_item.amount %>
                 <% end %>
+                <%= @total_amount %>
               </td>
               <td><%= order.order_status_i18n %></td>
           </tr>
           <% end %>
+        </tbody>
       </table>
-      <%= paginate @orders %>
+      <div class="offset-4">
+        <%= paginate @orders %>
+      </div>
   </div>
 </div>

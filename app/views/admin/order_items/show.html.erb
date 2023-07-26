@@ -1,2 +1,37 @@
-<h1>Admin::OrderItems#show</h1>
-<p>Find me in app/views/admin/order_items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+      <h4 class="row bg-light pb-2"><strong><%= @order.name %>さんの注文履歴</strong></h4>
+      <table class ="container table">
+         <thead>
+          <tr class="row bg-light ">
+              <th class="col-4 pl-5">購入日時</th>
+              <th class="col-4 pl-5">注文個数</th>
+              <th class="col-4 pl-3">注文ステータス</th>
+          </tr>
+         </thead>
+         <tbody>
+          <% @orders.each do |order| %>
+          <% @total_amount = 0 %>
+          <tr class="row">
+              <td class="col-4 pl-5">
+                  <!--注文履歴詳細へのパス-->
+                  <%= link_to admin_order_path(order.id) do %>
+                   <%= order.created_at .strftime('%Y/%m/%d/%H:%M:%S') %>
+                  <% end %>
+              </td>
+              <td class="col-4 pl-5">
+                <% order.order_items.each do |order_item| %>
+                 <% @total_amount += order_item.amount %>
+                <% end %>
+                <%= @total_amount %>
+              </td>
+              <td class="col-4 pl-3"><%= order.order_status_i18n %></td>
+          </tr>
+          <% end %>
+         </tbody>
+      </table>
+      <div class="offset-4">
+        <%= paginate @orders %>
+      </div>
+  </div>
+</div>
