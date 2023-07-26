@@ -31,7 +31,7 @@
             <%= f.label :non_tax_price, "税抜価格" %>
             <%= f.number_field :non_tax_price %>円<br>
 
-            販売ステータス<%= f.radio_button :is_active, "true" %>販売中<%= f.radio_button :is_active, "false" %>販売停止中<br>
+            販売ステータス<%= f.radio_button :is_active, :true %>販売中<%= f.radio_button :is_active, :false %>販売停止中<br>
             <%= f.submit '新規登録', class:"btn btn-flex align-btn-cnter  btn-x btn-success" %>
           <% end %>
         </div>
