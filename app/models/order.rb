@@ -34,10 +34,5 @@ end
 #小計の計算:税込み価格 * 数量
   tax_price * amount
  end
- 
- def total_amount
-     OrderItem.all.sum(:amount)
- end
-
 
 end
