@@ -18,7 +18,7 @@
       <h3 class="mt-1"><b><%= @item.name %></b></h3>
       <h5 class="mt-4"><%= @item.introduction %></h5>
       <h5 class="mt-4"><b>￥<%= @item.tax_price.to_s(:delimited) %></b><small>（税込）</small></h5>
-      <div><%= flash[:notice] %></div>
+      <div><%= flash[:alert] %></div>
       <% if @item.is_active == true %>
         <%= form_with model: @cart_item,　local: true do |f| %>
           <!--item_id-->
