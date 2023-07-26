@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :new, :create, :update]
     get 'top' => 'homes#top'
-
+    get 'search'=> 'searches#search'
   end
   #customer用
   scope module: :public do
