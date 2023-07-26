@@ -9,9 +9,10 @@ class Item < ApplicationRecord
      validates :name
      validates :introduction
      validates :non_tax_price
-     validates :is_active
      validates :genre_id
   end
+  
+  validates :is_active, inclusion: {in: [true, false]}
 
   def get_image
    unless image.attached?
@@ -23,8 +24,8 @@ class Item < ApplicationRecord
 
   def tax_price
    (self.non_tax_price * 1.1).round
-  end 
-  
+  end
+
   def self.search_for(word)
     Item.where('name LIKE ?', '%'+word+'%')
   end
