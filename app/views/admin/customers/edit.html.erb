@@ -11,7 +11,7 @@
 
 <div class="container mt-4">
   <div class="row">
-      <h4 class=class="mb-4 text-center"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+      <h4 class="bg-light d-inline-block mb-4 text-center"><b><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</b></h4>
       
       
        <table class="table table-borderless">
@@ -36,7 +36,7 @@
            </tr>
            <tr>
                <td><%= f.label "住所" %></td>
-               <td><%= f.text_field :address, autoforcus: true, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0" %> </td>
+               <td><%= f.text_field :address, autoforcus: true, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0", class:"w-100" %> </td>
            </tr>
            <tr>
                <td><%= f.label "電話番号" %></td>
@@ -50,13 +50,15 @@
                <td><%= f.label "会員ステータス" %></td>
                
                    <td>
-                       <%= f.radio_button :is_deleted, false, checked: @customer.is_deleted == false, class: 'custom-control-input', id: 'status-active' %>
-                       <%= f.label :is_deleted, '有効', class: 'custom-control-label', for: 'status-active' %>
+                       <span>
+                           <%= f.radio_button :is_deleted, false, checked: @customer.is_deleted == false %>
+                           <%= f.label :is_deleted, '有効' %>
+                       </span>
+                       <span class="pl-4">
+                           <%= f.radio_button :is_deleted, true, checked: @customer.is_deleted == true %>
+                           <%= f.label :is_deleted, '退会' %>
+                       </span>
                    </td>
-                   <td>
-                       <%= f.radio_button :is_deleted, true, checked: @customer.is_deleted == true, class: 'custom-control-input', id: 'status-deleted' %>
-                       <%= f.label :is_deleted, '退会', class: 'custom-control-label', for: 'status-deleted' %>
-                    </td>
            </tr>
            <tr>
                <td></td>
