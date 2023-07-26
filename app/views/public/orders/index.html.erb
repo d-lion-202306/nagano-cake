@@ -1,13 +1,13 @@
 <div class="container" >
-  <div class="row align-middle">
-    <div class="col-lg-5">
-      <h4 class="bg-light d-inline-block mt-sm-1 offset-2 p-0">注文履歴一覧</h4>
-    </div>
+  <div class="row">
+    <h4 class="mb-4 bg-light ">注文履歴一覧</h4>
+  </div>
+  <div class="row">
     <% if @orders.count == 0 %>
-      <div class=" d-flex align-items-center">
-        <h4>履歴はありません</h4>
-      </div>
+      <h4 class="text-center">履歴はありません</h4>
+  </div>
     <% else %>
+  <div class="row">
       <table class="table-bordered">
         <tr>
           <th>注文日</th>
