@@ -47,7 +47,7 @@
                 <td class="col-3"><%= address.address %></td>
                 <td class="col-1"><%= address.name %></td>
                 <%# if @address.customer == current_customer %>
-                <td class="col-2 text-center">
+                <td class="col-3 text-center">
                     <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
                     <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger" %>
                 </td>
