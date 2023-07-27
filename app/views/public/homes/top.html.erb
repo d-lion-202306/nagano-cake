@@ -13,31 +13,13 @@
           購入には会員登録が必要になります。</p>
         </div>
       </div>
-
+      <div>
       <h3 class="ml-4">新着商品</h3>
+       <%= render 'public/items/index', items: @items %>
         <div class="card-deck ml-4 mb-2" >
-          <% @items.each do |item| %>
-            <div class="text-card-container mt-2" style="width:200px">
-              <div class="card content-card" style="height:180px">
-                <div class="card-header p-0">
-                  <%= link_to item_path(item.id) do %>
-                    <%= image_tag item.get_image, size: "165x100" %>
-                  <% end %>
-                </div>
-                <div class="card-body pt-1 pl-2">
-                  <p class="card-title text-left mb-1" style="height:2rem"><b>
-                    <%= link_to(item_path(item.id), class:"text-dark", style:"font-size:14px") do %>
-                      <%= item.name %>
-                    <% end %>
-                  </b></p>
-                  <p class="card-text text-left mt-3">￥<%= item.tax_price %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <div class="text-right">
-          <%= link_to "全ての商品を見る>", items_path %>
+          <div class="text-right">
+            <%= link_to "全ての商品を見る>", items_path %>
+          </div>
         </div>
       </div>
     </div>
