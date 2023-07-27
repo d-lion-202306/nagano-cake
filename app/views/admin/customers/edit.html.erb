@@ -9,11 +9,9 @@
 <% end %>
 </div>
 
-<div class="container mt-4">
+<div class="container float-left mt-4 ml-5">
   <div class="row">
       <h4 class="bg-light d-inline-block mb-4 text-center"><b><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</b></h4>
-      
-      
        <table class="table table-borderless">
            <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
            <tr>
@@ -22,13 +20,11 @@
            </tr>
            <tr>
                <td><%= f.label "氏名" %></td>
-               <td><%= f.text_field :last_name, autoforcus: true, autocomplete: "last_name",  placeholder: "令和" %></td>
-               <td><%= f.text_field :first_name, autoforcus: true, autocomplete: "first_name",  placeholder: "道子" %></td>
+               <td><%= f.text_field :last_name, autoforcus: true, autocomplete: "last_name",  placeholder: "令和" %>　<%= f.text_field :first_name, autoforcus: true, autocomplete: "first_name",  placeholder: "道子" %></td>
            </tr>
            <tr>
                <td><%= f.label "フリガナ" %></td>
-               <td><%= f.text_field :last_name_kana, autoforcus: true, autocomplete: "last_name_kana",  placeholder: "レイワ" %></td>
-               <td><%= f.text_field :first_name_kana, autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ミチコ" %></td>
+               <td><%= f.text_field :last_name_kana, autoforcus: true, autocomplete: "last_name_kana",  placeholder: "レイワ" %>　<%= f.text_field :first_name_kana, autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ミチコ" %></td>
            </tr>
            <tr>
                <td><%= f.label "郵便番号" %></td>
@@ -36,7 +32,7 @@
            </tr>
            <tr>
                <td><%= f.label "住所" %></td>
-               <td><%= f.text_field :address, autoforcus: true, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0", class:"w-100" %> </td>
+               <td><%= f.text_field :address, autoforcus: true, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0", :size=>"80x10" %> </td>
            </tr>
            <tr>
                <td><%= f.label "電話番号" %></td>
