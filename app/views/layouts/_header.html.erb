@@ -6,8 +6,8 @@
  </div>
  <!--ようこそ-->
  <% if customer_signed_in? %>
- <div class="mx-auto col-6">
-   <p class="my-auto text-center">ようこそ、<%= customer.last_name %>さん！</p>
+ <div class="mx-auto col-4">
+   <p class="my-auto text-right">ようこそ、<%= customer.last_name %>さん！</p>
  </div>
  <% else %>
  <div class="mx-auto col-6"> </div>
@@ -17,42 +17,42 @@
   <span class="navbar-toggler-icon"></span>
  </button>
  <div class="block">
-   <div class="collapse navbar-collapse justify-content-end row" id="navbarNavDropdown">
-     <ul class="navbar-nav mr-5">
+   <div class="collapse navbar-collapse row" id="navbarNavDropdown">
+     <ul class="navbar-nav header-button">
        <% if request.fullpath.include? "/admin" %>
          <%# adminがログイン時のヘッダー %>
          <% if admin_signed_in? %>
-           <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "注文履歴一覧", admin_top_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-light" %></li>
+           <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "注文履歴一覧", admin_top_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %></li>
          <%# adminがログアウト時のヘッダー　%>
          <% else %>
-           <li class="nav-item"><%= link_to "About", homes_about_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "btn btn-sm btn-light" %></li>
+           <li class="nav-item"><%= link_to "About", homes_about_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "btn btn-sm btn-outline-dark" %></li>
          <% end %>
        <% else %>
          <%# customerがログイン時のヘッダー　%>
          <% if customer_signed_in? %>
-           <li class="nav-item"><%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "商品一覧", items_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "カート", cart_items_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-light" %></li>
+           <li class="nav-item"><%= link_to "マイページ", customers_mypage_path(current_customer.id), class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "商品一覧", items_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "カート", cart_items_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-sm btn-outline-dark" %></li>
          <%# customerログアウト時のヘッダー　%>
          <% else %>
-         　 <li class="nav-item"><%= link_to "About", homes_about_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "商品一覧", items_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-light" %></li>
-           <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn-light" %></li>
+         　 <li class="nav-item"><%= link_to "About", homes_about_path, class:"btn btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "商品一覧", items_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: "btn btn-sm btn-outline-dark" %></li>
+           <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: "btn btn-sm btn-outline-dark" %></li>
          <% end %>
        <% end %>
      </ul>
    </div>
 <!--search-ara-->
-   <div class="row">
+   <div class="row mt-2 justify-content-end" style="padding-right:70px">
    <% if admin_signed_in? %>
        <%= form_with url: admin_search_path,method: :get, local: true do |f| %>
          <%= f.text_field :word,placeholder:"Search"%>
