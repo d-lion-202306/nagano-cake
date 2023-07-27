@@ -14,12 +14,10 @@
         </div>
       </div>
       <div>
-      <h3 class="ml-4">新着商品</h3>
-       <%= render 'public/items/index', items: @items %>
-        <div class="card-deck ml-4 mb-2" >
-          <div class="text-right">
-            <%= link_to "全ての商品を見る>", items_path %>
-          </div>
+        <h3 class="ml-4">新着商品</h3>
+        <%= render 'public/items/index', items: @items %>
+        <div class="text-right mt-3">
+          <%= link_to "全ての商品を見る>", items_path %>
         </div>
       </div>
     </div>
