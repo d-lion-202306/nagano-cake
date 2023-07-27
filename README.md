@@ -1,24 +1,55 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-Things you may want to cover:
+* 案件の背景
+元々近隣住民が顧客でしたが、昨年始めたInstagramから人気となり、全国から注文が来るよう
+になりました。
+InstagramのDMやメールで通販の注文を受けていましたが、情報管理が煩雑になってきたため、管
+理機能を含んだ通販サイトを開設しようと思い至りました。
 
-* Ruby version
+* 通販について
+● 通販では注文に応じて製作する受注生産型としている。
+● 現在通販での注文量は十分に対応可能な量のため、1日の受注量に制限は設けない。
+● 送料は1配送につき全国一律800円。
+● 友人や家族へのプレゼントなど、注文者の住所以外にも商品を発送できる。
+● 支払方法はクレジットカード、銀行振込から選択できる。
 
-* System dependencies
+* Ruby version 3.1.2
+* Rails version 6.1.7.4
 
-* Configuration
+* 追加した Gem
+gem 'devise'
+gem '*','~> 1.2.1'
+gem "enum_help"
 
-* Database creation
+* 実装した機能
+  * 顧客側実装機能
+    ログイン機能
+    ログアウト機能
+    商品一覧表示機能
+    商品詳細情報表示機能
+    カート追加機能
+    カート編集機能
+    注文機能
+    会員情報編集機能
+    退会機能
+    配送先追加・編集機能
+    注文履歴一覧表示機能
+    注文履歴詳細表示機能
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * 管理者側実装機能
+    ログイン機能
+    ログアウト機能
+    注文履歴一覧表示機能
+    注文履歴詳細表示機能
+    顧客一覧表示機能 
+    顧客詳細情報表示機能
+    商品一覧表示機能
+    商品詳細情報表示機能
+    商品情報変更機能
+    ジャンル設定機能
+    
+    
+    
