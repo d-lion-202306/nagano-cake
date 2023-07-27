@@ -7,15 +7,15 @@
       <h4 class="text-center">履歴はありません</h4>
   </div>
     <% else %>
-  <div class="row">
-      <table class="table-bordered">
+  <div class="col-lg-12">
+      <table class="table-bordered mt-3">
         <tr>
-          <th>注文日</th>
-          <th>配送先</th>
-          <th>注文商品</th>
-          <th>支払い金額</th>
-          <th>ステータス</th>
-          <th>注文詳細</th>
+          <th class="col-1 bg-light">注文日</th>
+          <th class="col-3 bg-light">配送先</th>
+          <th class="col-1 bg-light">注文商品</th>
+          <th class="col-1 bg-light">支払い金額</th>
+          <th class="col-1 bg-light">ステータス</th>
+          <th class="col-1 bg-light">注文詳細</th>
         </tr>
         <% @orders.each do |order| %>
           <tr>
@@ -23,9 +23,9 @@
               <%= order.created_at.strftime('%Y/%m/%d') %>
             </td>
             <td>
-              〒<%= order.post_code %>
-              <%= order.address %>
-              <%= order.name %>
+                〒<%= order.post_code %><br>
+                <%= order.address %><br>
+                <%= order.name %>
             </td>
             <td>
               <% order.order_items.each do |order_item| %>
@@ -38,7 +38,7 @@
             <td>
               <%= order.order_status_i18n %>
             </td>
-            <td>
+            <td class="text-center">
               <%= link_to "表示する", order_path(order.id), class:'btn-sm btn-primary' %>
             </td>
           </tr>
