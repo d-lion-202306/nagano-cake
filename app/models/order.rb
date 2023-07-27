@@ -35,4 +35,7 @@ end
   tax_price * amount
  end
 
+  def full_name
+    last_name+first_name
+  end
 end
