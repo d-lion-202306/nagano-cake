@@ -7,24 +7,22 @@
   </ul>
 <% end %>
 
-<div class="container">
- <h4 class="col-4 py-3 bg-light">配送先編集</h4>
+ <h4 class="bg-light d-inline-block my-4 offset-1"><b>配送先編集</b></h4>
  <%= form_with model: @address do |f| %>
-  <table>
+  <table class="ml-5">
      <tr>
-         <td class="col-4 py-3"><%= f.label "郵便番号(ハイフンなし)" %></td>
+         <td class="col-4 py-2"><%= f.label "郵便番号(ハイフンなし)" %></td>
          <td><%= f.text_field :post_code, autoforcus: true, autocomplete: "post_code",  placeholder: "0000000" %></td>
      </tr>
      <tr>
-         <td class="col-4 py-3"><%= f.label "住所" %></td>
+         <td class="col-4 py-2"><%= f.label "住所" %></td>
          <td><%= f.text_field :address, autocomplete: "address",  placeholder: "東京都渋谷区代々木神園町0-0", size: 50 %></td>
      </tr>
      <tr>
-         <td class="col-4 py-3"><%= f.label "宛名" %></td>
+         <td class="col-4 py-2"><%= f.label "宛名" %></td>
          <td><%= f.text_field :name, autocomplete: "name",  placeholder: "令和道子" %></td>
          <td></td>
          <td><%= f.submit '変更内容を保存', class: "btn btn-success" %> </td>
      </tr>
   </table>
   <% end %>
-</div>

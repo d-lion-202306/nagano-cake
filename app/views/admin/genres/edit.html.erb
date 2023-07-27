@@ -18,7 +18,7 @@
           <%= form_with model: @genre, url: admin_genre_path do |f| %>
             <span class="pl-5"><b><%= f.label :name, 'ジャンル名' %></b></span>
             <span class="pl-5"><%= f.text_field :name %></span>
-            <span class="pl-5"><%= f.submit '変更を保存', class:"btn btn-sm  btn-success " %></span>
+            <span class="pl-5"><%= f.submit '変更を保存', class:"btn btn-sm  btn-success" %></span>
           <% end %>
         </div>
       </div>

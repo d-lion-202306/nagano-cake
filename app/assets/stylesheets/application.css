@@ -50,3 +50,9 @@ footer{
 .top-content{
     background-color: white;
 }
+.header-button{
+    width:500px;
+    justify-content:space-between;
+    margin-right: 70px;
+}
+

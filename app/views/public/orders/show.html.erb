@@ -1,59 +1,72 @@
-<div class="container">
   <div class="d-flex">
-    <h4 class="my-auto bg-light text-center" style="width:300px">注文履歴詳細</h4>
+    <h4 class="bg-light d-inline-block my-4 offset-1"><b>注文履歴詳細</b></h4>
   </div>
-  <div>
-      <p>注文情報</p>
-        <table class="table-bordered mt-3">
-          <tr>
-            <th>注文日</th>
-            <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
-          </tr>
-          <tr>
-            <th>配送先</th>
-            <th>
-              〒<%= @order.post_code %><br>
-              <%= @order.address %><br>
-              <%= @order.name %>
-            </th>
-          </tr>
-          <tr>
-            <th>支払方法</th>
-            <th><%= @order.payment_method %></th>
-          </tr>
-          <tr>
-            <th>ステータス</th>
-            <th><%= @order.order_status_i18n %></th>
-          </tr>
-        </table>
-  </div>
-    <div>
-      <p>請求情報</p>
-      <table class="table-bordered mt-3">
-        <tr>
-          <th>商品合計</th>
-          <th><%= @order.total_payment.to_s(:delimited) %></th>
-        </tr>
-        <tr>
-          <th>配送料</th>
-          <th>800</th>
-        </tr>
-        <tr>
-          <th>ご請求金額</th>
-          <th><%= (@order.total_payment + 800).to_s(:delimited) %></th>
-        </tr>
-      </table>
-    </div>
+  　　<div class="row">
+  　　  <div class="col-4">
+        <p class="ml-4"><b>注文情報</b></p>
+      </div>
+      <div class="col-3">
+        <p><b>請求情報</b></p>
+      </div>
+      </div>
+       <div class="row ml-5">
+           <div class="col-4">
+               <table class ="table table-bordered">
+                   <tbody>
+                      <tr>
+                        <td class="bg-light col-2">注文日</td>
+                        <td class="col-8"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+                      </tr>
+                      <tr>
+                        <td class="bg-light">配送先</td>
+                        <td>
+                          〒<%= @order.post_code %><br>
+                          <%= @order.address %><br>
+                          <%= @order.name %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="bg-light">支払方法</td>
+                        <td><%= @order.payment_method %></td>
+                      </tr>
+                      <tr>
+                        <td class="bg-light">ステータス</td>
+                        <td><%= @order.order_status_i18n %></td>
+                      </tr>
+                    </tbody>
+              </table>
+            </div>
+            <div class="col-3">
+              
+              <table class="table table-bordered">
+                  <tbody>
+                       <tr>
+                         <td class="bg-light">商品合計</td>
+                         <td><%= @order.total_payment.to_s(:delimited) %></td>
+                       </tr>
+                       <tr>
+                          <td class="bg-light">配送料</td>
+                          <td><%= @order.postage.to_s(:delimited) %></td>
+                       </tr>
+                       <tr>
+                          <td class="bg-light"><b>ご請求金額</b></td>
+                          <td><%= (@order.total_payment + 800).to_s(:delimited) %></td>
+                       </tr>
+                  </tbody>
+               </table>
+            </div>
+       </div>
+      <div>
 
-    <div>
-      <p>注文内容</p>
-      <table class="table">
+      <p class="ml-5"><b>注文内容</b></p>
+      <div class="row ml-2">
+      <table class="col-5 table table-bordered ml-5">
         <thead>
-          <tr>
-            <th>商品</th>
-            <th>単価(税込)</th>
-            <th>個数</th>
-            <th>小計</th>
+          <tr class="bg-light">
+            <th class="col-6">商品</th>
+            <th class="col-2">単価(税込)</th>
+            <th class="col-1">個数</th>
+            <th class="col-1">小計</th>
           </tr>
         </thead>
         <% @order.order_items.each do |order_item| %>
@@ -67,5 +80,4 @@
         </tbody>
         <% end %>
       </table>
-    </div>
-</div>
+      </div>
